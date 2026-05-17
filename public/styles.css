@@ -12,9 +12,9 @@
 :root {
   --bg: #000;
   --fg: #fff;
-  --flip-half: 75ms;
-  --digit-size: clamp(3.5rem, 18vw, 9rem);
-  --clock-gap: clamp(0.35rem, 2vw, 1rem);
+  --flip-half: 500ms;
+  --digit-size: clamp(4rem, min(19vw, 26vmin), 17rem);
+  --clock-gap: clamp(0.4rem, 2.2vw, 1.25rem);
 }
 
 *,
@@ -41,20 +41,24 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr auto 1fr 1fr;
   align-items: center;
+  justify-items: center;
   gap: var(--clock-gap);
-  width: min(96vw, 42rem);
-  padding: clamp(0.75rem, 3vw, 1.5rem);
+  width: min(80vw, calc(100vw - 1rem));
+  max-height: 80vh;
+  padding: clamp(0.5rem, 2.5vw, 1.25rem);
+  box-sizing: border-box;
 }
 
 .digit-grid {
   display: grid;
   place-items: center;
   aspect-ratio: 3 / 4;
-  width: 100%;
-  max-height: min(70vh, 22rem);
+  width: min(100%, calc(78vh * 3 / 4));
+  max-height: 78vh;
+  min-height: 0;
   border: 1px solid #1a1a1a;
   background: #0a0a0a;
-  perspective: 900px;
+  perspective: min(1400px, 120vw);
 }
 
 .digit-flip {

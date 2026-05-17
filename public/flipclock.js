@@ -1,13 +1,13 @@
 /**
  * Total time for one digit fold (fold to edge-on, swap, unfold).
- * Default 150 ms; override temporarily with ?flip=200 (milliseconds, clamped 0–4000).
+ * Default 1000 ms; override temporarily with ?flip=500 (milliseconds, clamped 0–15000).
  */
 function readFlipDurationMs() {
   const raw = new URLSearchParams(window.location.search).get("flip");
-  if (raw === null || raw === "") return 150;
+  if (raw === null || raw === "") return 1000;
   const n = Number(raw);
-  if (!Number.isFinite(n)) return 150;
-  return Math.min(4000, Math.max(0, Math.round(n)));
+  if (!Number.isFinite(n)) return 1000;
+  return Math.min(15000, Math.max(0, Math.round(n)));
 }
 
 const FLIP_DURATION_MS = readFlipDurationMs();
