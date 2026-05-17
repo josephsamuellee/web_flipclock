@@ -1,3 +1,8 @@
 name = "web-flipclock"
 compatibility_date = "2024-01-01"
-pages_build_output_dir = "public"
+
+# Static site: `wrangler deploy` uploads these files as a Workers + assets deployment.
+# For Cloudflare Pages (Git integration), set build output to `public` and leave the
+# deploy command empty, or use `npx wrangler pages deploy public` from CI.
+[assets]
+directory = "./public"
