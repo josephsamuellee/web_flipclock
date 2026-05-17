@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flip clock</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="clock" aria-label="Current time in 24-hour format">
+      <div class="digit-grid" data-digit-index="0">
+        <div class="digit-flip"><span class="digit-char">0</span></div>
+      </div>
+      <div class="digit-grid" data-digit-index="1">
+        <div class="digit-flip"><span class="digit-char">0</span></div>
+      </div>
+      <div class="colon" aria-hidden="true">:</div>
+      <div class="digit-grid" data-digit-index="2">
+        <div class="digit-flip"><span class="digit-char">0</span></div>
+      </div>
+      <div class="digit-grid" data-digit-index="3">
+        <div class="digit-flip"><span class="digit-char">0</span></div>
+      </div>
+    </main>
+    <!--
+      Future: Ko-fi teaser button (bottom-right, 10s countdown, then open donation link).
+      Example hook: id="kofi-root" + script that reads data-kofi-url on the body.
+    -->
+    <script src="flipclock.js"></script>
+  </body>
+</html>
