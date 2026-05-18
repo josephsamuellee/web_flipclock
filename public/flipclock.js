@@ -109,3 +109,55 @@ function init() {
 }
 
 init();
+
+/** Per tab session via sessionStorage (not cookies): show once, then hide for reloads until the tab is closed. */
+const DONATION_BANNER_STORAGE_KEY = "flipclock-donation-banner-dismissed";
+const DONATION_BANNER_VISIBLE_MS = 10000;
+
+function initDonationBanner() {
+  const banner = document.getElementById("donation-banner");
+  if (!banner) return;
+
+  let dismissed = false;
+  try {
+    dismissed = sessionStorage.getItem(DONATION_BANNER_STORAGE_KEY) === "1";
+  } catch {
+    /* sessionStorage unavailable — show once this load without persisting */
+  }
+  if (dismissed) return;
+
+  banner.hidden = false;
+
+  const fadeMs = prefersReducedMotion() ? 0 : 850;
+
+  window.setTimeout(() => {
+    banner.classList.add("donation-banner--fade-out");
+
+    let completed = false;
+    const finish = () => {
+      if (completed) return;
+      completed = true;
+      try {
+        sessionStorage.setItem(DONATION_BANNER_STORAGE_KEY, "1");
+      } catch {
+        /* ignore */
+      }
+      banner.hidden = true;
+    };
+
+    if (fadeMs === 0) {
+      finish();
+      return;
+    }
+
+    const onEnd = (e) => {
+      if (e.target !== banner || e.propertyName !== "opacity") return;
+      banner.removeEventListener("transitionend", onEnd);
+      finish();
+    };
+    banner.addEventListener("transitionend", onEnd);
+    window.setTimeout(finish, fadeMs + 400);
+  }, DONATION_BANNER_VISIBLE_MS);
+}
+
+initDonationBanner();

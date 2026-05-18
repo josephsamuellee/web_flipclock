@@ -3,8 +3,44 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Flip clock</title>
+    <title>24-hour flip clock — minimal, no ads, low bandwidth</title>
+    <meta
+      name="description"
+      content="Free in-browser 24-hour flip clock: lightweight static page, no ads, optional Ko-fi tip. Updates every minute with a simple fold animation."
+    />
+    <meta name="keywords" content="flip clock, 24 hour clock, digital flip clock, minimalist clock, no ads, low bandwidth, browser clock" />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="Joseph" />
+    <meta name="theme-color" content="#000000" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="24-hour flip clock — minimal, no ads" />
+    <meta
+      property="og:description"
+      content="Free in-browser 24-hour flip clock: lightweight static page, no ads. Optional Ko-fi support."
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="24-hour flip clock — minimal, no ads" />
+    <meta
+      name="twitter:description"
+      content="Free in-browser 24-hour flip clock: lightweight static page, no ads."
+    />
     <link rel="stylesheet" href="styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "24-hour flip clock",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript. Works in modern browsers.",
+        "description": "A minimal in-browser 24-hour flip clock. Lightweight static page with no ads; optional support via Ko-fi.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
   </head>
   <body>
     <main class="clock" aria-label="Current time in 24-hour format">
@@ -22,10 +58,22 @@
         <div class="digit-flip"><span class="digit-char">0</span></div>
       </div>
     </main>
-    <!--
-      Future: Ko-fi teaser button (bottom-right, 10s countdown, then open donation link).
-      Example hook: id="kofi-root" + script that reads data-kofi-url on the body.
-    -->
+    <aside
+      id="donation-banner"
+      class="donation-banner"
+      hidden
+      aria-label="Optional support"
+    >
+      <p class="donation-banner__inner">
+        consider buying me a $3 coffee
+        <a
+          class="donation-banner__link"
+          href="https://ko-fi.com/joseph12163"
+          target="_blank"
+          rel="noopener noreferrer"
+          >https://ko-fi.com/joseph12163</a>
+      </p>
+    </aside>
     <script src="flipclock.js"></script>
   </body>
 </html>
